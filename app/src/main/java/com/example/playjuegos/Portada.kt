@@ -1,4 +1,4 @@
-package com.example.playjuegos.ui.theme
+package com.example.playjuegos
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
@@ -21,7 +21,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.playjuegos.R
 
 @Composable
 fun MenuPlayJuegos(navController: NavHostController) {
