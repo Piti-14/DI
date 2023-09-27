@@ -47,6 +47,8 @@ fun MenuNewPlayer() {
         var nicknameText by remember { mutableStateOf(TextFieldValue("")) }
         var phoneText by remember { mutableStateOf(TextFieldValue("")) }
         var emailText by remember { mutableStateOf(TextFieldValue("")) }
+        var mandatoryText1 by remember { mutableStateOf("*Mandatory") }
+        var mandatoryText2 by remember { mutableStateOf("*Mandatory") }
 
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -61,14 +63,8 @@ fun MenuNewPlayer() {
 
             TextField(
                 value = nameText,
-                onValueChange = {newText -> nameText = newText},
-                label = {Text(
-                            "Name",
-                            colors = TextFieldDefaults.outlinedTextFieldColors(
-                                        textColor = Color.DarkGray
-                                    )
-                            )
-                        },
+                onValueChange = { newText -> nameText = newText },
+                label = {Text("Name")},
                 modifier = Modifier.weight(1.9f),
                 shape = RoundedCornerShape(20.dp, 20.dp, 0.dp, 0.dp),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
@@ -79,6 +75,14 @@ fun MenuNewPlayer() {
             )
             
             Spacer(modifier = Modifier.weight(0.1f))
+        }
+        
+        Row (Modifier.weight(0.5f)){
+            Spacer(Modifier.weight(1f))
+            
+            Text(text = mandatoryText1)
+            
+            Spacer(Modifier.weight(1f))
         }
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -91,7 +95,12 @@ fun MenuNewPlayer() {
                 onValueChange = { newText -> lastnameText = newText},
                 label = {Text("Lastname")},
                 modifier = Modifier.weight(1.9f),
-                shape = RoundedCornerShape(20.dp, 20.dp, 0.dp, 0.dp)
+                shape = RoundedCornerShape(20.dp, 20.dp, 0.dp, 0.dp),
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = Orange300,
+                    containerColor = Green300,
+                    textColor = Color.Black,
+                )
             )
 
             Spacer(modifier = Modifier.weight(0.1f))
@@ -107,10 +116,23 @@ fun MenuNewPlayer() {
                 onValueChange = { newText -> nicknameText = newText},
                 label = {Text("Nickname")},
                 modifier = Modifier.weight(1.9f),
-                shape = RoundedCornerShape(20.dp, 20.dp, 0.dp, 0.dp)
+                shape = RoundedCornerShape(20.dp, 20.dp, 0.dp, 0.dp),
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = Orange300,
+                    containerColor = Green300,
+                    textColor = Color.Black,
+                )
             )
 
             Spacer(modifier = Modifier.weight(0.1f))
+        }
+
+        Row (Modifier.weight(0.5f)){
+            Spacer(Modifier.weight(1f))
+
+            Text(text = mandatoryText2)
+
+            Spacer(Modifier.weight(1f))
         }
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -162,7 +184,11 @@ fun MenuNewPlayer() {
                 label = {Text("Phone Number")},
                 modifier = Modifier.weight(1.9f),
                 shape = RoundedCornerShape(20.dp, 20.dp, 0.dp, 0.dp),
-
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = Orange300,
+                    containerColor = Green300,
+                    textColor = Color.Black,
+                )
             )
 
             Spacer(modifier = Modifier.weight(0.1f))
@@ -184,12 +210,46 @@ fun MenuNewPlayer() {
                 onValueChange = {newText -> emailText = newText},
                 label = {Text("Email")},
                 modifier = Modifier.weight(1.9f),
-                shape = RoundedCornerShape(20.dp, 20.dp, 0.dp, 0.dp)
+                shape = RoundedCornerShape(20.dp, 20.dp, 0.dp, 0.dp),
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = Orange300,
+                    containerColor = Green300,
+                    textColor = Color.Black,
+                )
             )
 
             Spacer(modifier = Modifier.weight(0.1f))
         }
         
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Row (modifier = Modifier.weight(1f)){
+
+            Spacer(Modifier.weight(1f))
+
+            Button(
+                onClick = {
+                    if(nameText.text.isBlank()) {
+                             mandatoryText1 = "*Error: Required Field"
+                    } else {
+                        mandatoryText1 = "*Mandatory"
+                    }
+
+                    if(nicknameText.text.isBlank()) {
+                        mandatoryText2 = "*Error: Required Field"
+                    } else {
+                        mandatoryText2 = "*Mandatory"
+                    }
+                },
+                modifier = Modifier.weight(2f)
+            ) {
+                Text(text = "Add New Player")
+
+            }
+
+            Spacer(Modifier.weight(1f))
+        }
+
         Spacer(modifier = Modifier.weight(3f))
     }
 }

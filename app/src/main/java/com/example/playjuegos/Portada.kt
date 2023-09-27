@@ -18,6 +18,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -54,7 +56,8 @@ fun MenuPlayJuegos(navController: NavHostController) {
 fun MenuVertical(navController: NavHostController, modifier: Modifier = Modifier) {
     Text(
         text = stringResource(id = R.string.portada),
-        fontSize = 50.sp
+        fontSize = 50.sp,
+        fontFamily = FontFamily(Font(R.font.courgette_regular))
     )
 
     Spacer(modifier = modifier.height(50.dp))
