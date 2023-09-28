@@ -24,8 +24,9 @@ class MainActivity : ComponentActivity() {
                 ){
                   val navController = rememberNavController()
                   NavHost(navController = navController, startDestination = "Portada") {
-                      composable("Portada") { MenuPlayJuegos(navController) }
-                      composable("NewPlayer") { MenuNewPlayer() }
+                      composable("Portada") {MenuPlayJuegos(navController)}
+                      composable("NewPlayer") {MenuNewPlayer()}
+                      composable("Preferences") {MenuPreferences()}
                   }
                 }
             }

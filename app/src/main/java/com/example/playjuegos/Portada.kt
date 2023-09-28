@@ -1,12 +1,14 @@
 package com.example.playjuegos
 
 import android.content.res.Configuration
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -17,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -54,6 +57,14 @@ fun MenuPlayJuegos(navController: NavHostController) {
 
 @Composable
 fun MenuVertical(navController: NavHostController, modifier: Modifier = Modifier) {
+    Image(
+        painter = painterResource(id = R.drawable.portada),
+        contentDescription = "icono",
+        modifier = Modifier.size(150.dp)
+    )
+
+    Spacer(Modifier.height(10.dp))
+
     Text(
         text = stringResource(id = R.string.portada),
         fontSize = 50.sp,
@@ -91,7 +102,7 @@ fun MenuVertical(navController: NavHostController, modifier: Modifier = Modifier
     }
 
     Button(
-        onClick = { /*TODO*/ },
+        onClick = { navController.navigate("Preferences") },
         modifier = modifier
             .width(250.dp)
             .clip(RoundedCornerShape(34)),
@@ -110,10 +121,7 @@ fun MenuVertical(navController: NavHostController, modifier: Modifier = Modifier
             .width(250.dp)
             .clip(RoundedCornerShape(34)),
         shape = RectangleShape
-
-
-    )
-    {
+    ) {
         Text(
             text = stringResource(id = R.string.button4),
             fontSize = 20.sp,
@@ -122,6 +130,14 @@ fun MenuVertical(navController: NavHostController, modifier: Modifier = Modifier
 }
 @Composable
 fun MenuHorizontal (navController: NavHostController, modifier: Modifier = Modifier) {
+    Image(
+        painter = painterResource(id = R.drawable.portada),
+        contentDescription = "icono",
+        modifier = Modifier.size(150.dp)
+    )
+
+    Spacer(Modifier.height(10.dp))
+
     Text(
         text = stringResource(id = R.string.portada),
         fontSize = 50.sp
@@ -165,7 +181,7 @@ fun MenuHorizontal (navController: NavHostController, modifier: Modifier = Modif
 
     Row {
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate("Prferences") },
             modifier = modifier
                 .width(250.dp)
                 .clip(RoundedCornerShape(34)),
@@ -186,8 +202,6 @@ fun MenuHorizontal (navController: NavHostController, modifier: Modifier = Modif
                 .width(250.dp)
                 .clip(RoundedCornerShape(34)),
             shape = RectangleShape
-
-
         )
         {
             Text(
