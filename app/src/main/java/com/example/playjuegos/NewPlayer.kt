@@ -10,7 +10,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
@@ -23,6 +25,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -41,7 +44,12 @@ import com.example.playjuegos.ui.theme.Orange300
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MenuNewPlayer() {
-    Column (Modifier.fillMaxSize()){
+    Column (
+        Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
+        //verticalArrangement = Arrangement.
+        ){
         var nameText by remember { mutableStateOf(TextFieldValue("")) }
         var lastnameText by remember { mutableStateOf(TextFieldValue("")) }
         var nicknameText by remember { mutableStateOf(TextFieldValue("")) }
@@ -52,12 +60,12 @@ fun MenuNewPlayer() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Row (Modifier.weight(1f)){
+        Row (){
             Image(
                 painter = painterResource(id = R.drawable.account),
                 contentDescription = "Account",
                 modifier = Modifier
-                    .weight(0.9f)
+                    .size(70.dp)
                     .fillMaxSize()
             )
 
@@ -77,8 +85,8 @@ fun MenuNewPlayer() {
             Spacer(modifier = Modifier.weight(0.1f))
         }
         
-        Row (Modifier.weight(0.5f)){
-            Spacer(Modifier.weight(1f))
+        Row (){
+            //Spacer(Modifier.weight(1f))
             
             Text(text = mandatoryText1)
             
@@ -87,7 +95,7 @@ fun MenuNewPlayer() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Row (Modifier.weight(1f)){
+        Row (){
             Spacer(modifier = Modifier.weight(0.9f))
 
             TextField(
@@ -108,7 +116,7 @@ fun MenuNewPlayer() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Row (Modifier.weight(1f)){
+        Row (){
             Spacer(modifier = Modifier.weight(0.9f))
 
             TextField(
@@ -127,7 +135,7 @@ fun MenuNewPlayer() {
             Spacer(modifier = Modifier.weight(0.1f))
         }
 
-        Row (Modifier.weight(0.5f)){
+        Row (){
             Spacer(Modifier.weight(1f))
 
             Text(text = mandatoryText2)
@@ -169,7 +177,7 @@ fun MenuNewPlayer() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Row (Modifier.weight(1f)){
+        Row (){
             Image(
                 painter = painterResource(id = R.drawable.camera),
                 contentDescription = "Camera",
@@ -196,7 +204,7 @@ fun MenuNewPlayer() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Row (Modifier.weight(1f)){
+        Row (){
             Image(
                 painter = painterResource(id = R.drawable.email),
                 contentDescription = "Mail",
@@ -223,7 +231,7 @@ fun MenuNewPlayer() {
         
         Spacer(modifier = Modifier.height(20.dp))
 
-        Row (modifier = Modifier.weight(1f)){
+        Row (){
 
             Spacer(Modifier.weight(1f))
 
@@ -250,6 +258,6 @@ fun MenuNewPlayer() {
             Spacer(Modifier.weight(1f))
         }
 
-        Spacer(modifier = Modifier.weight(3f))
+        //Spacer(modifier = Modifier.weight(3f))
     }
 }

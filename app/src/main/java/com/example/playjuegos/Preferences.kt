@@ -2,13 +2,23 @@ package com.example.playjuegos
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Done
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Slider
@@ -29,29 +39,33 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun MenuPreferences() {
-    var radiusState by rememberSaveable { mutableStateOf("") }
 
     Column (
-        modifier = Modifier.fillMaxSize(),
-        //verticalArrangement = Arrangement.SpaceEvenly,
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.Start
     ){
         Text(text = "Choose one:", textAlign = TextAlign.Center, modifier = Modifier.padding(150.dp, 10.dp, 100.dp, 10.dp))
-        InitButtons()
-        ShowSlider()
+        val choice = InitButtons()
+        val punctuation = ShowSlider()
 
+        //ShowFilterChips()
+        Box(
+            Modifier
+                .fillMaxSize()
+                .padding(25.dp), contentAlignment = Alignment.BottomEnd
+        ) {
+            StartFAB(choice, punctuation)
+        }
     }
 
-    Box(
-        Modifier
-            .fillMaxSize()
-            .padding(25.dp), contentAlignment = Alignment.BottomEnd) {
-        StartFAB(radiusState, steps)
-    }
+
 }
 
 @Composable
-fun InitButtons() {
+fun InitButtons(): String {
+    var radiusState by rememberSaveable { mutableStateOf("") }
 
     Row {
         RadioButton(
@@ -129,12 +143,14 @@ fun InitButtons() {
 
         Text(text = "Air Control", Modifier.padding(top = 12.dp))
     }
+
+    return radiusState
 }
 
 @Composable
-fun ShowSlider() {
+fun ShowSlider(): Float {
     val range = 0f..10f
-    val steps = 10
+    val steps = 9
 
     var selection by remember {mutableStateOf(0f)}
 
@@ -146,25 +162,53 @@ fun ShowSlider() {
         modifier = Modifier.padding(15.dp,0.dp, 15.dp,0.dp),
         //colors = SliderDefaults.colors(Color.Yellow)
     )
+
+    return selection
 }
 
 @Composable
-fun StartFAB(radiusState: String, sliderRange: Double) {
+fun StartFAB(choice: String, punctuation: Float) {
     val context = LocalContext.current
     var message = ""
 
     FloatingActionButton(
         onClick = {
-            if (radiusState == "") {
-                message = "Has seleccionado $radiusState con una puntuación de $sliderRange"
+            if (choice != "") {
+                message = "Has seleccionado $choice con una puntuación de $punctuation"
             } else {
                 message = "No has seleccionado ninguna aplicación"
             }
 
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         },
         shape = CircleShape,
     ){
         Image(painter = painterResource(id = R.drawable.tick), contentDescription = "Tick")
     }
 }
+
+/*@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ShowFilterChips() {
+    var platform by rememberSaveable { mutableStateOf("") }
+    val context = LocalContext.current
+    FilterChip(
+        selected = (platform == "PS4"),
+        onClick = {
+            platform = "PS4";
+            Toast.makeText(context, platform, Toast.LENGTH_SHORT).show()
+        },
+        label = { Text(text = "PS4") },
+        leadingIcon = if (platform == "PS4") {
+            {
+                Icon(
+                    imageVector = Icons.Filled.Done,
+                    contentDescription = "Done icon",
+                    modifier = Modifier.size(FilterChipDefaults.IconSize)
+                )
+            }
+        } else {
+            null
+        }
+    )
+}*/

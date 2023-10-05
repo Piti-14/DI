@@ -133,17 +133,17 @@ fun MenuHorizontal (navController: NavHostController, modifier: Modifier = Modif
     Image(
         painter = painterResource(id = R.drawable.portada),
         contentDescription = "icono",
-        modifier = Modifier.size(150.dp)
+        modifier = Modifier.size(125.dp)
     )
 
-    Spacer(Modifier.height(10.dp))
+    Spacer(Modifier.height(5.dp))
 
     Text(
         text = stringResource(id = R.string.portada),
         fontSize = 50.sp
     )
 
-    Spacer(modifier = modifier.height(30.dp))
+    Spacer(modifier = modifier.height(15.dp))
 
     Row {
         Button(
@@ -181,7 +181,7 @@ fun MenuHorizontal (navController: NavHostController, modifier: Modifier = Modif
 
     Row {
         Button(
-            onClick = { navController.navigate("Prferences") },
+            onClick = { navController.navigate("Preferences") },
             modifier = modifier
                 .width(250.dp)
                 .clip(RoundedCornerShape(34)),
