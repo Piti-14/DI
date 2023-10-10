@@ -2,7 +2,6 @@ package com.example.playjuegos
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,7 +33,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -206,7 +204,7 @@ fun ShowFilterChips() {
             selected = (platform == "PS4"),
             onClick = {
                 platform = "PS4";
-                Toast.makeText(context, platform, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Has seleccionado " + platform, Toast.LENGTH_SHORT).show()
             },
             label = { Text(text = "PS4") },
             leadingIcon = if (platform == "PS4") {
@@ -226,7 +224,7 @@ fun ShowFilterChips() {
             selected = (platform == "XBOX"),
             onClick = {
                 platform = "XBOX";
-                Toast.makeText(context, platform, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Has seleccionado " + platform, Toast.LENGTH_SHORT).show()
             },
             label = { Text(text = "XBOX") },
             leadingIcon = if (platform == "XBOX") {
@@ -246,7 +244,7 @@ fun ShowFilterChips() {
             selected = (platform == "3DS"),
             onClick = {
                 platform = "3DS";
-                Toast.makeText(context, platform, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Has seleccionado " + platform, Toast.LENGTH_SHORT).show()
             },
             label = { Text(text = "3DS") },
             leadingIcon = if (platform == "3DS") {
@@ -266,7 +264,7 @@ fun ShowFilterChips() {
             selected = (platform == "WII"),
             onClick = {
                 platform = "WII";
-                Toast.makeText(context, platform, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Has seleccionado " + platform, Toast.LENGTH_SHORT).show()
             },
             label = { Text(text = "WII") },
             leadingIcon = if (platform == "WII") {
@@ -286,7 +284,7 @@ fun ShowFilterChips() {
             selected = (platform == "PC"),
             onClick = {
                 platform = "PC";
-                Toast.makeText(context, platform, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Has seleccionado " + platform, Toast.LENGTH_SHORT).show()
             },
             label = { Text(text = "PC") },
             leadingIcon = if (platform == "PC") {

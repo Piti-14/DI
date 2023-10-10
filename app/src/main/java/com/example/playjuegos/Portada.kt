@@ -74,7 +74,7 @@ fun MenuVertical(navController: NavHostController, modifier: Modifier = Modifier
     Spacer(modifier = modifier.height(50.dp))
 
     Button(
-        onClick = { /*TODO*/ },
+        onClick = { navController.navigate("Games") },
         modifier = modifier
             .width(250.dp)
             .clip(RoundedCornerShape(34)),
@@ -116,7 +116,7 @@ fun MenuVertical(navController: NavHostController, modifier: Modifier = Modifier
     }
 
     Button(
-        onClick = { /*TODO*/ },
+        onClick = { navController.navigate("About") },
         modifier = modifier
             .width(250.dp)
             .clip(RoundedCornerShape(34)),
@@ -147,7 +147,7 @@ fun MenuHorizontal (navController: NavHostController, modifier: Modifier = Modif
 
     Row {
         Button(
-            onClick = {  },
+            onClick = { navController.navigate("Games") },
             modifier = modifier
                 .width(250.dp)
                 .clip(RoundedCornerShape(34)),
@@ -197,7 +197,7 @@ fun MenuHorizontal (navController: NavHostController, modifier: Modifier = Modif
         Spacer(modifier = modifier.width(30.dp))
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate("About") },
             modifier = modifier
                 .width(250.dp)
                 .clip(RoundedCornerShape(34)),
