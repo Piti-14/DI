@@ -61,7 +61,7 @@ fun MenuGames() {
 @Composable
 fun CreateGameRow(id: Int, description: String, spacerSize: Dp, names: ArrayList<String>){
 
-    var name = ""
+    var check by rememberSaveable { mutableStateOf(false)}
     var state by rememberSaveable { mutableStateOf(names) }
 
     Row (){
@@ -72,13 +72,14 @@ fun CreateGameRow(id: Int, description: String, spacerSize: Dp, names: ArrayList
         )
 
         Checkbox(
-            checked = state.contains(name),
+            checked = check,
             onCheckedChange = {
                 if (!state.contains(description)) {
-                    name = description
-                    names.add(name)
+                    state.add(description)
+                    check = true
                 } else {
-                    names.remove(name)
+                    state.remove(description)
+                    check = false
                 }
             },
             enabled = true,

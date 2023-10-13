@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -86,9 +87,9 @@ fun MenuNewPlayer() {
         }
         
         Row (){
-            //Spacer(Modifier.weight(1f))
+            Spacer(Modifier.width(70.dp))
             
-            Text(text = mandatoryText1)
+            Text(text = mandatoryText1, modifier = Modifier.padding(start = 10.dp))
             
             Spacer(Modifier.weight(1f))
         }
@@ -96,7 +97,7 @@ fun MenuNewPlayer() {
         Spacer(modifier = Modifier.height(20.dp))
 
         Row (){
-            Spacer(modifier = Modifier.weight(0.9f))
+            Spacer(modifier = Modifier.width(70.dp))
 
             TextField(
                 value = lastnameText,
@@ -117,7 +118,7 @@ fun MenuNewPlayer() {
         Spacer(modifier = Modifier.height(20.dp))
 
         Row (){
-            Spacer(modifier = Modifier.weight(0.9f))
+            Spacer(modifier = Modifier.width(70.dp))
 
             TextField(
                 value = nicknameText,
@@ -136,9 +137,9 @@ fun MenuNewPlayer() {
         }
 
         Row (){
-            Spacer(Modifier.weight(1f))
+            Spacer(Modifier.width(70.dp))
 
-            Text(text = mandatoryText2)
+            Text(text = mandatoryText2, Modifier.padding(start = 10.dp))
 
             Spacer(Modifier.weight(1f))
         }
@@ -146,7 +147,7 @@ fun MenuNewPlayer() {
         Spacer(modifier = Modifier.height(20.dp))
 
         Row (horizontalArrangement = Arrangement.SpaceEvenly){
-            Spacer(modifier = Modifier.width(125.dp))
+            Spacer(modifier = Modifier.width(70.dp))
 
             Image(
                 painter = painterResource(id = R.drawable.android),
@@ -154,7 +155,7 @@ fun MenuNewPlayer() {
                 modifier = Modifier.size(125.dp)
             )
             
-            Spacer(modifier = Modifier.width(20.dp))
+            Spacer(modifier = Modifier.width(60.dp))
             
             Button(
                 onClick = { /*TODO*/ },
@@ -182,7 +183,7 @@ fun MenuNewPlayer() {
                 painter = painterResource(id = R.drawable.camera),
                 contentDescription = "Camera",
                 modifier = Modifier
-                    .weight(0.9f)
+                    .size(70.dp)
                     .fillMaxSize()
             )
 
@@ -209,7 +210,7 @@ fun MenuNewPlayer() {
                 painter = painterResource(id = R.drawable.email),
                 contentDescription = "Mail",
                 modifier = Modifier
-                    .weight(0.9f)
+                    .size(70.dp)
                     .fillMaxSize()
             )
 
