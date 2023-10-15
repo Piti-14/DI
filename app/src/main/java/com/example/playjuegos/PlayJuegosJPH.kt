@@ -28,6 +28,7 @@ class MainActivity : ComponentActivity() {
                       composable("NewPlayer") {MenuNewPlayer()}
                       composable("Preferences") {MenuPreferences()}
                       composable("Games") {MenuGames()}
+                      composable("About") { MenuAbout() }
                   }
                 }
             }

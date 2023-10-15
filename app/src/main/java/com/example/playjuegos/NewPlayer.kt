@@ -2,11 +2,14 @@ package com.example.playjuegos
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -17,10 +20,16 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MenuItemColors
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -58,6 +67,9 @@ fun MenuNewPlayer() {
         var emailText by remember { mutableStateOf(TextFieldValue("")) }
         var mandatoryText1 by remember { mutableStateOf("*Mandatory") }
         var mandatoryText2 by remember { mutableStateOf("*Mandatory") }
+        var selectedText by remember { mutableStateOf("") }
+        var expanded by remember { mutableStateOf(false) }
+
 
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -179,6 +191,9 @@ fun MenuNewPlayer() {
         Spacer(modifier = Modifier.height(20.dp))
 
         Row (){
+
+            val phones = listOf("657812343", "654771080", "645645120", "961314007", "960002781")
+
             Image(
                 painter = painterResource(id = R.drawable.camera),
                 contentDescription = "Camera",
@@ -187,18 +202,56 @@ fun MenuNewPlayer() {
                     .fillMaxSize()
             )
 
-            TextField(
+            /*TextField(
                 value = phoneText,
                 onValueChange = { newText -> phoneText = newText},
                 label = {Text("Phone Number")},
-                modifier = Modifier.weight(1.9f),
+                modifier = Modifier
+                    .weight(1.9f)
+                    .clickable { expanded = true },
                 shape = RoundedCornerShape(20.dp, 20.dp, 0.dp, 0.dp),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = Orange300,
                     containerColor = Green300,
                     textColor = Color.Black,
                 )
+            )*/
+
+            OutlinedTextField(
+                value = selectedText,
+                onValueChange = {selectedText = it},
+                enabled = false,
+                readOnly = true,
+                modifier = Modifier
+                    .clickable { expanded = true }
+                    .fillMaxWidth()
+                    .weight(1.9f),
+                shape = RoundedCornerShape(20.dp, 20.dp, 0.dp, 0.dp),
+                label = {Text("Phone Number")},
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = Orange300,
+                    containerColor = Green300,
+                    textColor = Color.Black
+                )
             )
+
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+                modifier = Modifier
+                    .background(Green100),
+            ) {
+                phones.forEach { phone ->
+                    DropdownMenuItem(
+                        text = {Text(text = phone, color = Color.Black)},
+                        onClick = {
+                            selectedText = phone
+                            expanded = false
+                        },
+                    )
+                }
+            }
+
 
             Spacer(modifier = Modifier.weight(0.1f))
         }
@@ -239,7 +292,7 @@ fun MenuNewPlayer() {
             Button(
                 onClick = {
                     if(nameText.text.isBlank()) {
-                             mandatoryText1 = "*Error: Required Field"
+                        mandatoryText1 = "*Error: Required Field"
                     } else {
                         mandatoryText1 = "*Mandatory"
                     }
